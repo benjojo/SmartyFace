@@ -11,20 +11,22 @@
 // ==/UserScript==
 
 
-var endPoint = "http://text.nsa.me.uk/pose";
+$( document ).ready(function() {
+        var endPoint = "http://text.nsa.me.uk/pose";
 
-function findTextBoxes (argument) {
-        var boxes = $('textarea');
-        var parent = boxes[2].parentNode;
-        $(parent).prepend("<i id=\"SmartyFace\" style=\"pointer-events:none; color: #CCC;position: absolute;font: 13px Verdana,Arial,Tahoma,Calibri,Geneva,sans-serif;padding: 0 1px 0 1px;\">Type Reply Here</i>");
-        var textarea = boxes[2];
-        $(boxes[2]).keypress(function(a) {
-                var text = $(textarea).val();
-                $.post( endPoint, { post: text }, function( data ) {
-                        $('#SmartyFace').html( $(textarea).val()+data );
+        function findTextBoxes (argument) {
+                var boxes = $('textarea');
+                var parent = boxes[2].parentNode;
+                $(parent).prepend("<i id=\"SmartyFace\" style=\"pointer-events:none; color: #CCC;position: absolute;font: 13px Verdana,Arial,Tahoma,Calibri,Geneva,sans-serif;padding: 0 1px 0 1px;\">Type Reply Here</i>");
+                var textarea = boxes[2];
+                $(boxes[2]).keypress(function(a) {
+                        var text = $(textarea).val();
+                        $.post( endPoint, { post: text }, function( data ) {
+                                $('#SmartyFace').html( $(textarea).val()+data );
+                        });
+                        // $('#SmartyFace').html($(textarea).val());
+
                 });
-                // $('#SmartyFace').html($(textarea).val());
-
-        });
+        }
+        findTextBoxes();
 }
-findTextBoxes();
