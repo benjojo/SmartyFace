@@ -24,8 +24,6 @@ $( document ).ready(function() {
                         $.post( endPoint, { post: text }, function( data ) {
                                 $('#SmartyFace').html( $(textarea).val()+data );
                         });
-                        // $('#SmartyFace').html($(textarea).val());
-
                 });
         }
         findTextBoxes();
