@@ -19,8 +19,12 @@ function findTextBoxes (argument) {
         $(parent).prepend("<i id=\"SmartyFace\" style=\"pointer-events:none; color: #CCC;position: absolute;font: 13px Verdana,Arial,Tahoma,Calibri,Geneva,sans-serif;padding: 0 1px 0 1px;\">This is a test wow. such test</i>");
         var textarea = boxes[2];
         $(boxes[2]).keypress(function(a) {
-
-                $('#SmartyFace').html($(textarea).val());
+                var text = $(textarea).val();
+                $.post( endPoint, { post: text })
+                .done(function( data ) {
+                        $('#SmartyFace').html($(textarea).val()+data);
+                });
+                // $('#SmartyFace').html($(textarea).val());
 
         });
 }
