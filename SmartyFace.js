@@ -20,9 +20,8 @@ function findTextBoxes (argument) {
         var textarea = boxes[2];
         $(boxes[2]).keypress(function(a) {
                 var text = $(textarea).val();
-                $.post( endPoint, { post: text })
-                .done(function( data ) {
-                        $('#SmartyFace').html($(textarea).val()+data);
+                $.post( endPoint, { post: text }, function( data ) {
+                        $('#SmartyFace').html( $(textarea).val()+data );
                 });
                 // $('#SmartyFace').html($(textarea).val());
 
