@@ -7,7 +7,7 @@
 // @include         http://www.facepunch.com/*
 // @include                https://facepunch.com/*
 // @include         https://www.facepunch.com/*
-// @version         1
+// @version         1.0.1
 // ==/UserScript==
 var s=document.createElement('script');
 s.setAttribute('type','text/javascript');
